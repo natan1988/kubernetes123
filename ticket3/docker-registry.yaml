@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec: 
+  containers:
+  - image: natan88/ubuntu
+    name: ubuntu
+  imagePullSecrets:
+  - name: max       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

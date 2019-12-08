@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-dns
+  labels:
+    rs: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      name: nginx-dns      
+      labels:
+        app: myapp
+    spec:
+      hostname: max123 
+      subdomain: nginx-dns
+      containers:
+      - name: max123
+        image: nginx
+        stdin: true
+        tty: true
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-dns
+spec:      
+  clusterIP: None 
+  selector:
+    app: myapp
+  ports:
+  - name: max
+    port: 80
+    targetPort: 80
+      

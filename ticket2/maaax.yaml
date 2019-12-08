@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: custom-dns
+  labels:
+    app: nginx-dns      
+spec:
+  containers:
+  - name: maks
+    image: nginx
+  dnsPolicy: None
+  dnsConfig: 
+    nameservers: 
+      - 203.0.113.44
+    searches:
+      - custom.dns.local     

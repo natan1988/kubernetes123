@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:      
+  name: maks1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-dns
+  template:
+    metadata:
+      labels:
+        app: nginx-dns 
+    spec:
+      hostname: maks-1     
+      subdomain: nginx-dns
+      containers:
+      - name: nginx-dns
+        image: nginx
+        ports:
+        - containerPort: 80  
+          
